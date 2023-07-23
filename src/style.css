@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Belanosima:wght@400;700&family=Lilita+One&family=Roboto:ital,wght@0,700;0,900;1,400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: min(28%, 350px) repeat(3, 1fr);
+    grid-template-rows: 100px repeat(3, 1fr);
+}
+
+/* Header */
+
+.header {
+    grid-row: 1;
+    grid-column: 1 / 5;
+    background-color: #f1faee;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 6px rgb(169, 166, 166);
+}
+.header h1 {
+    font-weight: 900;
+
+}
+
+/* Sidebar */
+
+.sidebar {
+    grid-row: 2 / 5;
+    background-color: #a8dadc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+}
+.sidebar h2 {
+    padding: 7px 50px;
+    border-bottom: 1px solid;
+}
+
+/* Main */
+
+.main {
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+}
