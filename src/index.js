@@ -1,5 +1,13 @@
 import './style.css';
 import todoItem from "./create-todos";
+import displayProject from './display-controller';
 
-const item = todoItem("Study", "study session for about 2 hours", "7/23/2023", "high");
-console.log(item);
+// When "Add Project" button is pressed, add project
+
+const addProjectButton = document.querySelector(".add-project");
+const form = document.querySelector(".sidebar form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+})
+addProjectButton.addEventListener("click", displayProject);
