@@ -17,7 +17,40 @@
             <button type="submit" class="add-project">Add Project</button>
         </form>
     </div>
-    <main class="main"></main>
+    <main class="main">
+        <div class="todos">
+            <h2 class="project-title"></h2>
+            <button>+</button>
+            <div class="todo-list"></div>
+        </div>
+        <div class="create-todo">
+            <form action="">
+                <div>
+                    <label for="title">Task name</label>
+                    <input type="text" placeholder="Task name" id="title">
+                </div>
+                <div>
+                    <label for="due-date">Due Date</label>
+                    <input type="date" id="due-date">
+                </div>
+                <div>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea name="" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
