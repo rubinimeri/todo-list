@@ -1,4 +1,4 @@
-import todoItem, { Project, projectList, addProject, checkTitle, select } from "./create-todos";
+import todoItem, { Project, projectList, addProject, checkTitle, select, unselect, checkSelect } from "./create-todos";
 
 export default function displayProject() {
     // Create new project
@@ -24,26 +24,57 @@ export default function displayProject() {
     projectContainer.appendChild(title);
 }
 
-function loopThroughTodoItems(todoItems) {
-    const todos = document.querySelector(".todos");
-    todoItems.forEach(item => {
-        const todoContainer = document.createElement("div");
-        todoContainer.textContent = `${item.title} ${item.description} ${item.dueDate} ${item.priority}`
-
-        todos.append(todoContainer);
-    })
-}
-
 export function loadTodoForm() {
     const createTodos = document.querySelector(".create-todo");
     createTodos.style.display = "flex";
 }
 
+// Loads all todos
+export function loadTodos(projectList) {
+    const todoList = document.querySelector(".todo-list");
+    const project = checkSelect(projectList);
+    console.log(project);
+    project.todoItems.forEach(item => {
+        todoList.textContent += `${item.title} - ${item.dueDate} - ${item.priority} - ${item.description}`
+    })
+}
+// Loads one todo
+export function loadOneTodo(projectList) {
+    const todoList = document.querySelector(".todo-list");
+    const project = checkSelect(projectList);
+    const newTask = project.todoItems[project.todoItems.length-1];
+
+    todoList.textContent += `${newTask.title} - ${newTask.dueDate} - ${newTask.priority} - ${newTask.description} 
+    
+    `
+}
+// Removes all todos
+export function removeTodos() {
+    const todoList = document.querySelector(".todo-list");
+    todoList.textContent = "";
+}
+
 export function displayTodos(event) {
+    // Remove todo-items
+    removeTodos();
+
+    // Unselect all projects
+    unselect(projectList);
+    console.log(projectList)
+
+    // Display todos
+    const todos = document.querySelector(".todos");
+    todos.style.display = "block";
+    const todoList = document.querySelector(".todo-list");
+
+    // If the title of the link that was clicked is equal to a project title
+    // in the projectList array then select that project
     projectList.forEach(project => {
         if(event.target.innerText === project.title) {
-            document.querySelector(".todos").style.display = "block"
+            select(project);
+            console.log(project);
         }
     });
-    
+    // Load todo-items
+    loadTodos(projectList);
 }

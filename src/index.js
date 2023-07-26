@@ -1,12 +1,13 @@
 import './style.css';
-import todoItem from "./create-todos";
-import displayProject, { displayTodos, loadTodoForm } from './display-controller';
+import todoItem, { addTodoItem, projectList } from "./create-todos";
+import displayProject, { displayTodos, loadOneTodo, loadTodoForm, loadTodos } from './display-controller';
 
 // When "Add Project" button is pressed, add project
 
 const addProjectButton = document.querySelector(".add-project");
 const form = document.querySelector("form");
 let projects = []; // Stores the DOM projects
+let currentProject;
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -31,6 +32,9 @@ todoForm.addEventListener("submit", (e) => {
 // 
 const todoButton = document.querySelector(".main form button");
 todoButton.addEventListener("click", () => {
+
     const newTask = todoItem(document.querySelector("#title").value, document.querySelector("#description").value, document.querySelector("#due-date").value, document.querySelector("#priority").value );
-    console.log(newTask)
+    addTodoItem(projectList, newTask);
+    
+    loadOneTodo(projectList);
 })

@@ -51,6 +51,20 @@ body {
     padding: 7px 50px;
     border-bottom: 1px solid;
 }
+.project-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.project-container a {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 6px 16px;
+    color: black;
+}
+.project-container a:hover {
+    background-color: #f1faee;
+}
 .sidebar form {
     display: flex;
     flex-direction: column;
