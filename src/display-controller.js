@@ -1,4 +1,4 @@
-import { Project, projectList, addProject, checkTitle, select } from "./create-todos";
+import todoItem, { Project, projectList, addProject, checkTitle, select } from "./create-todos";
 
 export default function displayProject() {
     // Create new project
@@ -24,16 +24,26 @@ export default function displayProject() {
     projectContainer.appendChild(title);
 }
 
-export function displayTodos(event) {
+function loopThroughTodoItems(todoItems) {
     const todos = document.querySelector(".todos");
-    todos.style.display = "block";
-    
-    const todoList = document.querySelector(".todo-list");
+    todoItems.forEach(item => {
+        const todoContainer = document.createElement("div");
+        todoContainer.textContent = `${item.title} ${item.description} ${item.dueDate} ${item.priority}`
+
+        todos.append(todoContainer);
+    })
+}
+
+export function loadTodoForm() {
+    const createTodos = document.querySelector(".create-todo");
+    createTodos.style.display = "flex";
+}
+
+export function displayTodos(event) {
     projectList.forEach(project => {
         if(event.target.innerText === project.title) {
-            if(project.todoItems.length === 0) {
-                todoList.textContent = `${project.title} currently has no tasks`
-            }
+            document.querySelector(".todos").style.display = "block"
         }
     });
+    
 }

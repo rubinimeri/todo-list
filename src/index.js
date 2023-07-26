@@ -1,6 +1,6 @@
 import './style.css';
 import todoItem from "./create-todos";
-import displayProject, { displayTodos } from './display-controller';
+import displayProject, { displayTodos, loadTodoForm } from './display-controller';
 
 // When "Add Project" button is pressed, add project
 
@@ -17,3 +17,20 @@ form.addEventListener("submit", (e) => {
     projects[projects.length-1].addEventListener("click", displayTodos);
 })
 addProjectButton.addEventListener("click", displayProject);
+
+// When "+" button is clicked, display the task creator
+const createButton = document.querySelector(".create-todo-button");
+createButton.addEventListener("click", loadTodoForm)
+
+// Prevent the form from refreshing the page when submitted
+const todoForm = document.querySelector(".main form");
+todoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+})
+
+// 
+const todoButton = document.querySelector(".main form button");
+todoButton.addEventListener("click", () => {
+    const newTask = todoItem(document.querySelector("#title").value, document.querySelector("#description").value, document.querySelector("#due-date").value, document.querySelector("#priority").value );
+    console.log(newTask)
+})
