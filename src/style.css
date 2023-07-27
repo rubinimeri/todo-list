@@ -55,6 +55,7 @@ body {
     gap: 5px;
 }
 .project-container a {
+    font-weight: 600;
     font-size: 18px;
     text-decoration: none;
     padding: 6px 16px;
@@ -97,48 +98,27 @@ input:focus::placeholder {
     grid-row: 2 / 5;
     padding: 30px;
 }
-
+.title-container {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    gap: 6px;
+}
 .todos {
-    /* display: none; */
+    display: none;
 }
 
 .todo-list {
     display: flex;
     flex-direction: column;
 }
-.todo-list > div {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f1faee;
-    padding: 12px;
-}
-.todo-elements {
-    display: flex;
-    align-items: center;
-}
-.todo-list p {
-    display: inline-block;
-}
-.todo-list label {
-    font-weight: 100;
-}
-.todo-list svg {
-    width: 30px;
-}
-.todo-list button {
-    background: none;
-    border: none;
+
+.todos svg{
+    width: 50px;
 }
 .todos > button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    font-size: 40px;
     border: none;
-    color: white;
-    background-color: #2b2d42;
+    background-color: white;
 }
 
 .create-todo {

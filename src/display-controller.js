@@ -10,6 +10,11 @@ export default function displayProject() {
         alert("Project with that title already exists");
         return ;
     }
+    // Check if a project name is blank
+    if(project.title === "") {
+        alert("Project title must not be blank");
+        return;
+    }
     // Add project to projectList
     addProject(project);
     console.log(projectList);
@@ -44,9 +49,27 @@ export function loadOneTodo(projectList) {
     const project = checkSelect(projectList);
     const newTask = project.todoItems[project.todoItems.length-1];
 
-    todoList.textContent += `${newTask.title} - ${newTask.dueDate} - ${newTask.priority} - ${newTask.description} 
-    
-    `
+    // Create div.todo-item
+    const todoItem = document.createElement("div");
+    todoItem.classList.add("todo-item");
+    todoList.append(todoItem);
+
+    // Create checkmark div
+    const checkMarkContainer = document.createElement("div");
+    checkMarkContainer.classList.add("checkmark-container");
+    todoItem.append(checkMarkContainer);
+
+    // Create input[type="checkbox"]
+    const checkBox = document.createElement("input");
+    checkBox.setAttribute("type", "checkbox");
+    checkBox.setAttribute("id", "task-complete");
+    checkMarkContainer.append(checkBox);
+
+    // Create label for checkBox, and set it's text to project.title
+    const checkBoxLabel = document.createElement("label");
+    checkBoxLabel.setAttribute("for", "task-complete");
+    checkBoxLabel.innerText = newTask.title;
+    checkMarkContainer.append(checkBoxLabel);
 }
 // Removes all todos
 export function removeTodos() {
@@ -61,6 +84,10 @@ export function displayTodos(event) {
     // Unselect all projects
     unselect(projectList);
     console.log(projectList)
+
+    // Add project title to h2.project-title
+    const projectTitle = document.querySelector(".project-title");
+    projectTitle.innerText = event.target.innerText;
 
     // Display todos
     const todos = document.querySelector(".todos");
@@ -78,3 +105,4 @@ export function displayTodos(event) {
     // Load todo-items
     loadTodos(projectList);
 }
+

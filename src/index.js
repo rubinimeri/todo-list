@@ -14,8 +14,10 @@ form.addEventListener("submit", (e) => {
 
     // Everytime a project is added it will be pushed to projects array
     // And an event listener will be added to the project
-    projects.push(document.querySelector(".project-container").lastChild)
-    projects[projects.length-1].addEventListener("click", displayTodos);
+    if(document.querySelector(".project-container").lastChild !== null)
+        projects.push(document.querySelector(".project-container").lastChild);
+    if(projects.length > 0)
+        projects[projects.length-1].addEventListener("click", displayTodos);
 })
 addProjectButton.addEventListener("click", displayProject);
 
@@ -33,8 +35,12 @@ todoForm.addEventListener("submit", (e) => {
 const todoButton = document.querySelector(".main form button");
 todoButton.addEventListener("click", () => {
 
+    // Create new todoItem, add it to the project and load it
     const newTask = todoItem(document.querySelector("#title").value, document.querySelector("#description").value, document.querySelector("#due-date").value, document.querySelector("#priority").value );
     addTodoItem(projectList, newTask);
-    
     loadOneTodo(projectList);
+
+    // Select div.create-todo and make it disappear
+    const createTodo = document.querySelector(".create-todo");
+    createTodo.style.display = "none";
 })
