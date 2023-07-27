@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Belanosima:wght@400;700&family=Lilita+One&family=Roboto:ital,wght@0,700;0,900;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Belanosima:wght@400;700&family=Lilita+One&family=Open+Sans:wght@400;700;800&family=Roboto:ital,wght@0,700;0,900;1,400&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
+    font-family: 'Open Sans';
     /* border: 1px solid; */
 }
 
@@ -32,8 +31,7 @@ body {
     box-shadow: 1px 1px 6px rgb(169, 166, 166);
 }
 .header h1 {
-    font-weight: 900;
-
+    font-weight: 800;
 }
 
 /* Sidebar */
@@ -101,10 +99,39 @@ input:focus::placeholder {
 }
 
 .todos {
-    display: none;
+    /* display: none; */
 }
 
-.todos button {
+.todo-list {
+    display: flex;
+    flex-direction: column;
+}
+.todo-list > div {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f1faee;
+    padding: 12px;
+}
+.todo-elements {
+    display: flex;
+    align-items: center;
+}
+.todo-list p {
+    display: inline-block;
+}
+.todo-list label {
+    font-weight: 100;
+}
+.todo-list svg {
+    width: 30px;
+}
+.todo-list button {
+    background: none;
+    border: none;
+}
+.todos > button {
     width: 60px;
     height: 60px;
     border-radius: 50%;
