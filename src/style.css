@@ -133,9 +133,21 @@ input:focus::placeholder {
 .todos svg{
     width: 50px;
 }
-.svg-down {
+.svg-down,
+.svg-up {
     width: 30px;
     display: none;
+}
+.delete-svg {
+    display: none;
+}
+.button-container .delete-svg {
+    width: 30px;
+    fill: red;
+}
+.button-container .delete-button {
+    background-color: none;
+    border: none;
 }
 .todos > button {
     border: none;

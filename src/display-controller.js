@@ -83,16 +83,50 @@ export function loadOneTodo(projectList) {
     buttonContainer.append(date);
 
     // Create a.down
-    const down = document.createElement("a");
-    down.setAttribute("href", "#");
-    down.classList.add("down");
-    buttonContainer.append(down);
+    const showMoreOrLess = document.createElement("a");
+    showMoreOrLess.setAttribute("href", "#");
+    showMoreOrLess.classList.add("showMoreOrLess");
+    buttonContainer.append(showMoreOrLess);
 
     // Select svg.svg-down
     const svgDown = document.querySelector(".svg-down");
-    const clone = svgDown.cloneNode(true);
-    clone.style.display = "block";
-    down.append(clone);
+    const cloneDown = svgDown.cloneNode(true);
+    cloneDown.style.display = "block";
+    showMoreOrLess.append(cloneDown);
+
+    // Select svg.svg-up
+    const svgUp = document.querySelector(".svg-up");
+    const cloneUp = svgUp.cloneNode(true);
+    
+
+    // Add event listener to a.showMoreOrLess
+    showMoreOrLess.addEventListener("click", () => {
+        if(cloneDown.style.display === "block"){
+            cloneDown.style.display = "none";
+            cloneUp.style.display = "block";
+            showMoreOrLess.append(cloneUp);
+
+            // Load Description
+            const descriptionContainer = document.createElement("div");
+            const description = newTask.description;
+            descriptionContainer.append(description);
+            todoItem.append(descriptionContainer);
+        }
+        else {
+            cloneUp.style.display = "none"
+            cloneDown.style.display = "block";
+            
+            todoItem.removeChild(todoItem.lastElementChild);
+        } 
+    })
+
+    // Add delete button to buttonContainer
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    const deleteSvg = document.querySelector(".delete-svg");
+    deleteButton.append(deleteSvg);
+    deleteSvg.style.display = "block";
+    buttonContainer.append(deleteButton);
 }
 // Removes all todos
 export function removeTodos() {
