@@ -123,10 +123,24 @@ export function loadOneTodo(projectList) {
     // Add delete button to buttonContainer
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
+    deleteButton.setAttribute("title", newTask.title);
     const deleteSvg = document.querySelector(".delete-svg");
-    deleteButton.append(deleteSvg);
-    deleteSvg.style.display = "block";
+    const deleteSvgClone = deleteSvg.cloneNode(true)
+    deleteButton.append(deleteSvgClone);
+    deleteSvgClone.style.display = "block";
     buttonContainer.append(deleteButton);
+
+    // Add event listener to deleteButton
+    deleteButton.addEventListener("click", () => {
+        for(let i = 0; i < project.todoItems.length; i++) {
+            if(project.todoItems[i].title === deleteButton.getAttribute("title")) {
+                project.todoItems.splice(i, 1);
+                console.log(project.todoItems);
+                const removedElement = document.querySelector(`.todo-item:nth-child(${i+1})`);
+                removedElement.remove();
+            }
+        }
+    })
 }
 // Removes all todos
 export function removeTodos() {
