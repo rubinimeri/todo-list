@@ -111,10 +111,31 @@ input:focus::placeholder {
 .todo-list {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
-
+.todo-item {
+    
+    background-color: #f1faee;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+}
+.button-container {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.checkmark-container label {
+    padding-left: 8px;
+}
 .todos svg{
     width: 50px;
+}
+.svg-down {
+    width: 30px;
+    display: none;
 }
 .todos > button {
     border: none;

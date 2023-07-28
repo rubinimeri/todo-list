@@ -70,6 +70,29 @@ export function loadOneTodo(projectList) {
     checkBoxLabel.setAttribute("for", "task-complete");
     checkBoxLabel.innerText = newTask.title;
     checkMarkContainer.append(checkBoxLabel);
+
+    // Create div to store due-date and up/down button
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    todoItem.append(buttonContainer);
+
+    // Create due-date
+    const date = document.createElement("p");
+    date.classList.add("date");
+    date.innerText = newTask.dueDate;
+    buttonContainer.append(date);
+
+    // Create a.down
+    const down = document.createElement("a");
+    down.setAttribute("href", "#");
+    down.classList.add("down");
+    buttonContainer.append(down);
+
+    // Select svg.svg-down
+    const svgDown = document.querySelector(".svg-down");
+    const clone = svgDown.cloneNode(true);
+    clone.style.display = "block";
+    down.append(clone);
 }
 // Removes all todos
 export function removeTodos() {
