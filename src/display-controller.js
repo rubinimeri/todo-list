@@ -1,4 +1,4 @@
-import todoItem, { Project, projectList, addProject, checkTitle, select, unselect, checkSelect, checkTodoTitle } from "./create-todos";
+import { Project, projectList, addProject, checkTitle, select, unselect, checkSelect } from "./create-todos";
 
 export default function displayProject() {
     // Create new project
@@ -130,7 +130,6 @@ const createTodos = (item) => {
 
 // Loads all todos
 export function loadTodos(projectList) {
-    const todoList = document.querySelector(".todo-list");
     const project = checkSelect(projectList);
     project.todoItems.forEach(item => {
         createTodos(item);
@@ -164,7 +163,6 @@ export function displayTodos(event) {
     // Display todos
     const todos = document.querySelector(".todos");
     todos.style.display = "block";
-    const todoList = document.querySelector(".todo-list");
 
     // If the title of the link that was clicked is equal to a project title
     // in the projectList array then select that project
