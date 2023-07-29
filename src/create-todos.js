@@ -52,3 +52,12 @@ export function checkSelect(projectList) {
         }
     }
 }
+
+// Check if a todo with a certain title already exists
+export function checkTodoTitle(newTask, project) {
+    for (const item of project.todoItems) {
+        if(item.title === newTask.title) {
+            return true;
+        }
+    }
+}

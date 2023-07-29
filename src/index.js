@@ -1,5 +1,5 @@
 import './style.css';
-import todoItem, { addTodoItem, projectList } from "./create-todos";
+import todoItem, { addTodoItem, checkTodoTitle, projectList, checkSelect } from "./create-todos";
 import displayProject, { displayTodos, loadOneTodo, loadTodoForm, loadTodos } from './display-controller';
 
 // When "Add Project" button is pressed, add project
@@ -34,9 +34,17 @@ todoForm.addEventListener("submit", (e) => {
 // 
 const todoButton = document.querySelector(".main form button");
 todoButton.addEventListener("click", () => {
+    
+    const project = checkSelect(projectList);
 
-    // Create new todoItem, add it to the project and load it
+    // Create new todoItem
     const newTask = todoItem(document.querySelector("#title").value, document.querySelector("#description").value, document.querySelector("#due-date").value, document.querySelector("#priority").value );
+
+    // Check if todo title already exists
+    if(checkTodoTitle(newTask, project)){
+        alert("Todo with that title already exists, try again");
+        return ;
+    }
     addTodoItem(projectList, newTask);
     loadOneTodo(projectList);
 
