@@ -17,7 +17,6 @@ export default function displayProject() {
     }
     // Add project to projectList
     addProject(project);
-    console.log(projectList);
 
     // Create link that represents the project we created earlier
     const title = document.createElement("a");
@@ -113,7 +112,6 @@ const createTodos = (item) => {
         for(let i = 0; i < project.todoItems.length; i++) {
             if(project.todoItems[i].title === deleteButton.getAttribute("title")) {
                 project.todoItems.splice(i, 1);
-                console.log(project.todoItems);
                 const removedElement = document.querySelector(`.todo-item:nth-child(${i+1})`);
                 removedElement.remove();
             }
@@ -134,7 +132,6 @@ const createTodos = (item) => {
 export function loadTodos(projectList) {
     const todoList = document.querySelector(".todo-list");
     const project = checkSelect(projectList);
-    console.log(project);
     project.todoItems.forEach(item => {
         createTodos(item);
     })
@@ -159,7 +156,6 @@ export function displayTodos(event) {
 
     // Unselect all projects
     unselect(projectList);
-    console.log(projectList)
 
     // Add project title to h2.project-title
     const projectTitle = document.querySelector(".project-title");
@@ -175,7 +171,6 @@ export function displayTodos(event) {
     projectList.forEach(project => {
         if(event.target.innerText === project.title) {
             select(project);
-            console.log(project);
         }
     });
     // Load todo-items

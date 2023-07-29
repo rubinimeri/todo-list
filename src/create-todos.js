@@ -16,7 +16,6 @@ export function addTodoItem(projectList, newTask) {
     projectList.forEach(project => {
         if(project.selected === true){
             project.todoItems.push(newTask);
-            console.log(project.todoItems);
         }
     });
 }
@@ -47,7 +46,6 @@ export function unselect(projectList) {
 export function checkSelect(projectList) {
     for (const project of projectList) {
         if(project.selected === true) {
-            console.log(project)
             return project;
         }
     }
