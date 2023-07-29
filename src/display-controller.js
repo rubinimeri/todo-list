@@ -119,6 +119,15 @@ const createTodos = (item) => {
             }
         }
     })
+    checkBox.addEventListener("input", () => {
+        if(checkBoxLabel.style.textDecoration === "line-through"){
+            checkBoxLabel.style.textDecoration = "none";
+            checkBoxLabel.style.color = "black";
+            return;
+        }
+        checkBoxLabel.style.textDecoration = "line-through";
+        checkBoxLabel.style.color = "gray";
+    })
 };
 
 // Loads all todos
